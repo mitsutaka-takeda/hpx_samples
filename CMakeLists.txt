@@ -4,8 +4,6 @@ project(hpx_practice)
 
 find_package(HPX)
 
-set(sources hello_world.cpp) # ソース・ファイルのリスト
-source_group("Source Files" FILES ${source}) # グループ化してIDEなどで見やすく
 # ビルド用のフラグを設定
 set(hello_world_FLAGS 
   COMPONENT_DEPENDENCIES 
@@ -16,8 +14,19 @@ set(hello_world_FLAGS
 # -DCMAKE_MODULE_PATH=/home/mtakeda/etc/hpx/lib/cmake/HPX
 add_hpx_executable(
   hello_world # target name
-  SOURCES ${sources}
+  SOURCES hello_world.cpp
   ${hello_world_FLAGS}
+  )
+
+# set(fibonacci_FLAGS
+#   COMPONENT_DEPENDENCIES
+#   iostreams)
+
+add_hpx_executable(
+  fibonacci
+  SOURCES fibonacci.cpp
+  COMPONENT_DEPENDENCIES 
+  iostreams
   )
 # add_hpx_executable(name ...)
 # はname_exe("nameに_exeアンダースコアとexeをsuffixした")
