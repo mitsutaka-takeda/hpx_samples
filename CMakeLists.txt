@@ -4,9 +4,6 @@ project(hpx_practice)
 
 find_package(HPX)
 
-include(CMakeParseArguments)
-include(HPX_Utils)
-
 set(sources hello_world.cpp) # ソース・ファイルのリスト
 source_group("Source Files" FILES ${source}) # グループ化してIDEなどで見やすく
 # ビルド用のフラグを設定
