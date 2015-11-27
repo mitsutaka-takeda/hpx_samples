@@ -28,6 +28,13 @@ add_hpx_executable(
   COMPONENT_DEPENDENCIES 
   iostreams
   )
+
+add_hpx_executable(
+  quick_sort
+  SOURCES quick_sort.cpp
+  COMPONENT_DEPENDENCIES 
+  iostreams
+  )
 # add_hpx_executable(name ...)
 # はname_exe("nameに_exeアンダースコアとexeをsuffixした")
 
