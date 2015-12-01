@@ -38,6 +38,13 @@ add_hpx_executable(
 # add_hpx_executable(name ...)
 # はname_exe("nameに_exeアンダースコアとexeをsuffixした")
 
+add_hpx_executable(
+  quick_sort_concurrent
+  SOURCES quick_sort.concurrent.cpp
+  COMPONENT_DEPENDENCIES 
+  iostreams
+)
+
 target_link_libraries(
   hello_world_exe
   boost_program_options
