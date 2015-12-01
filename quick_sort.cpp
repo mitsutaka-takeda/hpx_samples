@@ -1,6 +1,6 @@
 #include <hpx/hpx_init.hpp>
 #include <hpx/components/iostreams/standard_streams.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
+#include <algorithm>
 
 template <typename RandomAccessIterator>
 void
@@ -22,15 +22,15 @@ int main(int argc, char *argv[]) {
        desc_commandline("Usage: " HPX_APPLICATION_STRING " [options]");
 
     desc_commandline.add_options()
-        ( "n-value",
+        ( "size-of-vector",
           boost::program_options::value<boost::uint64_t>()->default_value(10),
-          "n value for the quick_sort function");
+          "size of the vector for the quick_sort function");
 
     return hpx::init(desc_commandline, argc, argv);
 }
 
 int hpx_main(boost::program_options::variables_map& vm){
-    boost::uint64_t n = vm["n-value"].as<boost::uint64_t>();
+    boost::uint64_t n = vm["size-of-vector"].as<boost::uint64_t>();
 
     {
         std::vector<int> nums(n);
