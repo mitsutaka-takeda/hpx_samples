@@ -45,6 +45,12 @@ add_hpx_executable(
   iostreams
 )
 
+add_hpx_executable(
+  parallel_sort
+  SOURCES parallel_sort.cpp
+  COMPONENT_DEPENDENCIES iostreams
+)
+
 target_link_libraries(
   hello_world_exe
   boost_program_options
