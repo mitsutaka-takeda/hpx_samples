@@ -3,7 +3,6 @@
 #include <hpx/include/parallel_sort.hpp>
 #include <hpx/parallel/execution_policy.hpp>
 #include <hpx/lcos/wait_all.hpp>
-#include <hpx/parallel/executors/parallel_executor.hpp>
 
 #include <cassert>
 
@@ -28,19 +27,18 @@ int hpx_main(boost::program_options::variables_map& vm){
         std::random_shuffle(nums.begin(), nums.end());
 
         hpx::util::high_resolution_timer t;
-        
+
         hpx::wait_all(
             hpx::parallel::sort(
-                hpx::parallel::parallel_task_execution_policy{}.on(hpx::parallel::parallel_executor()), 
-                nums.begin(), 
+                hpx::parallel::parallel_task_execution_policy{},
+                nums.begin(),
                 nums.end()
                 ));
 
-        char const* fmt = "sort %1% elements with quick_sort \n elapsed time: %2% [s]\n";
+        char const* fmt = "sort %1% elements with parallel::sort \n elapsed time: %2% [s]\n";
         std::cout << (boost::format(fmt) % n % t.elapsed());
         assert(std::is_sorted(nums.cbegin(), nums.cend()));
     }
 
     return hpx::finalize(); // Handles HPX shutdown
 }
-
